@@ -1,4 +1,5 @@
 const udp = require('dgram');
+const fs = require('fs');
 
 // instancia um servidor UDP
 const server = udp.createSocket('udp4');
@@ -12,15 +13,15 @@ server.on('error', function (error) {
 // emite cada vez que o cliente manda algum dado
 server.on('message', function (msg, info) {
     console.log('Mensagem recebida do cliente: ' + msg.toString());
-    console.log(`Origem: ${info.address}:${info.port} \n Tamanho dos dados: ${msg.length} \n`);
+    console.log(`Origem: ${info.address}:${info.port} \nTamanho dos dados: ${msg.length} \n`);
 
     // envia mensagem
-    const response = "Dados recebidos, obrigado cliente."
+    const response = fs.readFileSync('serverdata.txt')
     server.send(response, info.port, 'localhost', function (error) {
         if (error) {
             client.close();
         } else {
-            console.log('Dados enviados.');
+            console.log('Mensagem respondida ao cliente.');
         }
     });
 });

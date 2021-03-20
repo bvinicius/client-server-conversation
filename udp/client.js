@@ -7,10 +7,10 @@ const client = udp.createSocket('udp4');
 
 // buffer da mensagem a ser enviada
 // const data = Buffer.from('Olá, socket!');
-const data = fs.readFileSync('data.txt')
+const data = fs.readFileSync('clientdata.txt')
 
 client.on('message', function (msg, info) {
-    console.log(`Mensagem recebida pelo server: ${msg.toString()}`);
+    console.log(`Resposta do servidor: ${msg.toString()}`);
     console.log(`Origem: ${info.address}:${info.port} \nTamanho dos dados: ${msg.length} \n`);
 });
 
@@ -19,6 +19,6 @@ client.send(data, 2222, 'localhost', function (error) {
     if (error) {
         client.close();
     } else {
-        console.log('Data sent !!!');
+        console.log('Mensagem enviada ao servidor.\n');
     }
 });
