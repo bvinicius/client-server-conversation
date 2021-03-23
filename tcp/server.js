@@ -7,7 +7,7 @@ const server = net.createServer(socket => {
         console.log(` > Cliente diz: ${message}`)
 
         setTimeout(() => {
-            const response = fs.readFileSync('serverdata.txt')
+            const response = fs.readFileSync('files/serverdata.txt')
             console.log('Dados enviados ao cliente.\n')
             socket.write(response)
             socket.pipe(socket)

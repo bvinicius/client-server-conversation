@@ -8,8 +8,8 @@ server.on('message', function (data, info) {
     console.log(` > Cliente diz: ${message}`);
 
     setTimeout(() => {
-        const response = fs.readFileSync('serverdata.txt')
-        server.send(response, info.port, 'localhost', error => {
+        const response = fs.readFileSync('files/serverdata.txt')
+        server.send(response, info.port, '127.0.0.1', error => {
             console.log('Mensagem respondida ao cliente.\n');
         });
     }, 1000)
@@ -32,7 +32,7 @@ server.on('error', function (error) {
     server.close();
 });
 
-server.bind(2222);
+server.bind(3000);
 
 // servidor ficará aberto somente por 5 minutos.
 setTimeout(function () {
