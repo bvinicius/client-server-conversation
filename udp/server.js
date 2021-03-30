@@ -8,10 +8,10 @@ server.on('message', function (data, info) {
     console.log(` > Cliente diz: ${message}`);
 
     setTimeout(() => {
-        const response = fs.readFileSync('files/serverdata.txt')
-        server.send(response, info.port, '127.0.0.1', error => {
-            console.log('Mensagem respondida ao cliente.\n');
-        });
+        // const response = fs.readFileSync('files/file-1,5kb.txt')
+        // server.send(response, info.port, '127.0.0.1', error => {
+        //     console.log('Mensagem respondida ao cliente.\n');
+        // });
     }, 1000)
 });
 

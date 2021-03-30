@@ -3,7 +3,7 @@ const fs = require('fs');
 
 const client = udp.createSocket('udp4');
 
-const data = fs.readFileSync('files/clientdata.txt')
+const data = fs.readFileSync('files/file-100kb.txt')
 
 client.send(data, 3000, '127.0.0.1', function (error) {
     if (error) {
